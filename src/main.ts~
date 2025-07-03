@@ -1,0 +1,28 @@
+import Car from './Classes/Car';
+import './style.css'
+
+//const canvas = document.querySelector<HTMLCanvasElement>('#my-canvas');
+const canvas = document.getElementById("my-canvas") as HTMLCanvasElement;
+console.log(canvas);
+
+const ctx = canvas?.getContext("2d");
+if (!ctx) throw new Error("Could not get 2D context");
+console.log(ctx);
+
+ctx.fillStyle = "green";
+ctx.fillRect(10, 10, 100, 100);
+
+const car = new Car(100,100,30,50);
+car.draw(ctx);
+console.log(car);
+
+window.addEventListener('resize', () => {
+    setCanvasSize(canvas);
+  });
+
+  function setCanvasSize(canvas: HTMLCanvasElement) {
+  canvas.width = 200;
+  canvas.height = window.innerHeight;
+}
+
+setCanvasSize(canvas);
